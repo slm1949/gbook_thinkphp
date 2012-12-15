@@ -1,0 +1,1 @@
+{"0":"id","1":"user","2":"title","3":"content","4":"re_id","5":"re_num","6":"re_time","_autoinc":true,"_pk":"id","_type":{"id":"int(11)","user":"varchar(10)","title":"varchar(12)","content":"text","re_id":"int(11)","re_num":"int(11)","re_time":"datetime"}}
