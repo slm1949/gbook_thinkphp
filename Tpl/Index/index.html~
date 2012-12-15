@@ -8,5 +8,5 @@
 标题：{$vo.title}|
 内容：{$vo.content}<br/>
 </foreach>
-</body><!--联系在HTML里写备注-->
+</body>
 </html>
