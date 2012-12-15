@@ -4,6 +4,6 @@ class IndexAction extends Action {
 	$info=M('gbook');
         $data=$info->select();
         $this->assign('data',$data);
-        $this->display();//渲染，调用模板引擎
+        $this->display();//渲染，调用模板引擎12
      }
 }
