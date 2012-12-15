@@ -3,10 +3,14 @@
 <title>欢迎使用留言版</title>
 </head>
 <body>
+<center>
+<font size=5 color=#ff000>留言显示</font><br/>
 <foreach name="data" item="vo">
 第{$vo.id}条：|
+作者:{$vo.user}|
 标题：{$vo.title}|
 内容：{$vo.content}<br/>
 </foreach>
+</center>
 </body><!--联系在HTML里写备注-->
 </html>

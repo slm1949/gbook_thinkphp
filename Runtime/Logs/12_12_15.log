@@ -225,3 +225,69 @@ INFO: [ view_end ] --START--
 INFO: Run ShowPageTrace Behavior [ RunTime:-0.027583s ]
 INFO: [ view_end ] --END-- [ RunTime:0.000597s ]
 
+[ 2012-12-15T23:40:22+08:00 ] 127.0.0.1 /gbook_thinkphp/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000604s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000715s ]
+SQL: SHOW COLUMNS FROM `thinkphp_gbook` [ RunTime:0.001117s ]
+SQL: SELECT * FROM `thinkphp_gbook`  [ RunTime:0.000410s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.011006s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000511s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.011600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007863s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.019539s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.019999s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.020525s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.020895s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001964s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.021562s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000799s ]
+
+[ 2012-12-15T23:45:00+08:00 ] 127.0.0.1 /gbook_thinkphp/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000569s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000671s ]
+SQL: SHOW COLUMNS FROM `thinkphp_gbook` [ RunTime:0.000887s ]
+SQL: SELECT * FROM `thinkphp_gbook`  [ RunTime:0.000124s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.010289s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000402s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.010746s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008186s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.018983s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.019416s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.019813s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.020084s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001686s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.020754s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000793s ]
+
+[ 2012-12-15T23:45:16+08:00 ] 127.0.0.1 /gbook_thinkphp/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000564s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000673s ]
+SQL: SHOW COLUMNS FROM `thinkphp_gbook` [ RunTime:0.000975s ]
+SQL: SELECT * FROM `thinkphp_gbook`  [ RunTime:0.000151s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.012238s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000461s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.012757s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010263s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.023060s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.023390s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.023710s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.023981s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001490s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.024628s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000727s ]
+
