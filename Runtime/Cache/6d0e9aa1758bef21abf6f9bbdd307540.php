@@ -13,7 +13,11 @@
 <?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>第<?php echo ($vo["id"]); ?>条：|
 作者:<?php echo ($vo["user"]); ?>|
 标题：<?php echo ($vo["title"]); ?>|
-内容：<?php echo ($vo["content"]); ?><br/><?php endforeach; endif; else: echo "" ;endif; ?>
+内容：<?php echo ($vo["content"]); ?>|
+<a href="__APP__/Form/modify">修改</a>|
+<a href="__APP__/Form/del/id/<?php echo ($vo["id"]); ?>">删除<?php echo ($vo["id"]); ?>条留言</a>
+<br/><?php endforeach; endif; else: echo "" ;endif; ?>
+<a href="__APP__/Form/add">添加一条留言</a>
 </center>
 </body><!--联系在HTML里写备注-->
 </html>
