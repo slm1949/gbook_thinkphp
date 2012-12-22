@@ -37,7 +37,7 @@ class FormAction extends Action {
     
     }
     public function update(){
-           $Form=D('Gbook');
+         $Form=D('Gbook');
          if($Form->create()){
            if($Form->save()){
               $this->message="修改留言成功";
@@ -52,4 +52,25 @@ class FormAction extends Action {
          }
            //$result=
    }
+     public function manage(){
+         $Form=M('user');
+         $name=$_POST['name'];
+         $password=$_POST['password'];
+         if($password==$Form->where("name='$name'")->getField('password')){   //这句试了很久where()里的写法
+          $this->message='用户权限验证成功';  
+          $this->id=$_POST['id'];
+          $this->action=$_POST['action'];
+          $this->display();
+         }
+         else{
+           $this->error('管理员名或密码错误');
+         }
+         
+         
+     }    
+     public function rights(){
+            $this->id=$_GET['id'];
+            $this->action=$_GET['action'];
+            $this->display();
+      }    
  } 
