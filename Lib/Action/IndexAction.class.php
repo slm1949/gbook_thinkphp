@@ -4,6 +4,7 @@ class IndexAction extends Action {
 	$info=M('gbook');
         $data=$info->select();
         $this->assign('data',$data);
+        $this->assign('ip',$_SERVER["REMOTE_ADDR"]);
         $this->display();//渲染，调用模板引擎12
      }
 }

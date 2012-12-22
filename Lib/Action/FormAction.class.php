@@ -1,13 +1,17 @@
 <?php
 class FormAction extends Action {
   public function insert(){
-        $Form=D('Gbook');
-        //dump($Form);
-        if($Form->create()) {
+         $Form=D('Gbook');
+         $data['ip']=$_SERVER['REMOTE_ADDR'];//获得客户端IP
+         $data['re_time']=date("y-n-d   H:i:s");//获得服务器时间
+         $data['user']=$_POST['user'];
+         $data['title']=$_POST['title'];
+         $data['content']=$_POST['content'];
+        if($Form->create($data)) {
             $result=$Form->add();
             if($result) {
                 $this->message='添加成功！';
-                $this->display(go);
+                $this->display(go);//返回首页
             }else{
                 $this->error('写入错误！');
             }
@@ -38,7 +42,13 @@ class FormAction extends Action {
     }
     public function update(){
          $Form=D('Gbook');
-         if($Form->create()){
+         $data['ip']=$_SERVER['REMOTE_ADDR'];
+         $data['re_time']=date("Y-n-d   H:i:s");
+         $data['id']=$_POST['id'];
+         $data['user']=$_POST['user'];
+         $data['title']=$_POST['title'];
+         $data['content']=$_POST['content'];
+         if($Form->create($data)){
            if($Form->save()){
               $this->message="修改留言成功";
               $this->display(go);
