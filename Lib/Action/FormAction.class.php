@@ -7,18 +7,26 @@ class FormAction extends Action {
          $data['user']=$_POST['user'];
          $data['title']=$_POST['title'];
          $data['content']=$_POST['content'];
+   if($Form->where("ip='".$_SERVER['REMOTE_ADDR']."'")->count()<10){  //SQL中的查询条件中的字符串要有单引号
         if($Form->create($data)) {
             $result=$Form->add();
             if($result) {
                 $this->message='添加成功！';
                 $this->display(go);//返回首页
-            }else{
+            }
+            else{
                 $this->error('写入错误！');
             }
-        }else{
+        }
+        else{
              echo 'create方法错误';
             $this->error($Form->getError());
         }
+     }
+     else{
+     $this->message='同一Ip留言已经不能大于10条！';
+     $this->display(go);//返回首页
+     }
     }
     public function del(){
            //echo $_GET[id];
