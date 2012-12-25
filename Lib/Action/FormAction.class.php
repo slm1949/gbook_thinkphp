@@ -7,7 +7,17 @@ class FormAction extends Action {
          $data['user']=$_POST['user'];
          $data['title']=$_POST['title'];
          $data['content']=$_POST['content'];
-   if($Form->where("ip='".$_SERVER['REMOTE_ADDR']."'")->count()<10){  //SQL中的查询条件中的字符串要有单引号
+         $condition1['ip']=$data['ip'];
+         $condition1['re_time']=array('ELT',$data['re_time']);
+         $condition1['re_time']=array('EGT',$data['re_time']-'00-00-00 00:05:00');
+         $condition2['ip']=$data['ip'];
+         $condition2['re_time']=array('ELT',$data['re_time']);
+         $condition2['re_time']=array('EGT',$data['re_time']-'00-00-00 01:00:00');
+         $condition3['ip']=$data['ip'];
+         $condition3['re_time']=array('ELT',$data['re_time']);
+         $condition3['re_time']=array('EGT',$data['re_time']-'00-00-01 00:00:00');
+         //限制5分钟，1小时，1天内同意IP留言数量
+   if($Form->where($condition1)->count()<5 and $Form->where($condition2)->count()<20 and $Form->where($condition3)->count()<100 ){
         if($Form->create($data)) {
             $result=$Form->add();
             if($result) {
@@ -24,7 +34,7 @@ class FormAction extends Action {
         }
      }
      else{
-     $this->message='同一Ip留言已经不能大于10条！';
+     $this->message='你的留言大于规定时间的留言数量！';
      $this->display(go);//返回首页
      }
     }
