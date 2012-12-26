@@ -6,6 +6,7 @@ class FormAction extends Action {
          $data['re_time']=date("y-n-d   H:i:s");//获得服务器时间
          $data['user']=$_POST['user'];
          $data['title']=$_POST['title'];
+         $data['email']=$_POST['email'];
          $data['content']=$_POST['content'];
          $condition1['ip']=$data['ip'];
          $condition1['re_time']=array('ELT',$data['re_time']);
@@ -17,7 +18,7 @@ class FormAction extends Action {
          $condition3['re_time']=array('ELT',$data['re_time']);
          $condition3['re_time']=array('EGT',$data['re_time']-'00-00-01 00:00:00');
          //限制5分钟，1小时，1天内同意IP留言数量
-   if($Form->where($condition1)->count()<5 and $Form->where($condition2)->count()<20 and $Form->where($condition3)->count()<100 ){
+   if($Form->where($condition1)->count()<50 and $Form->where($condition2)->count()<20 and $Form->where($condition3)->count()<100 ){
         if($Form->create($data)) {
             $result=$Form->add();
             if($result) {
@@ -65,6 +66,7 @@ class FormAction extends Action {
          $data['id']=$_POST['id'];
          $data['user']=$_POST['user'];
          $data['title']=$_POST['title'];
+         $data['email']=$_POST['email'];
          $data['content']=$_POST['content'];
          if($Form->create($data)){
            if($Form->save()){
