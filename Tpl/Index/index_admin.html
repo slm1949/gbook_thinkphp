@@ -3,18 +3,10 @@
 <title>欢迎使用留言版</title>
 </head>
 <body>
-<a href="__URL__/admin">管理员登陆</a>
+管理员登陆:{$admin.name}
 <center>
 <font size=5 color=#ff000>留言显示</font><br/>
 <p>
-<foreach name="data" item="vo">
-<!--第{$vo.id}条：|
-作者:{$vo.user}|
-标题：{$vo.title}|
-电子邮箱：{$vo.email}
-内容：{$vo.content}<br/>
-</foreach>
--->
 <volist name="data" id="vo">
 第{$vo.id}条：|
 作者:{$vo.user}|
