@@ -102,5 +102,44 @@ class FormAction extends Action {
             $this->id=$_GET['id'];
             $this->action=$_GET['action'];
             $this->display();
-      }    
- } 
+      }  
+     public function reply(){
+       session_start();
+       if(!empty($_SESSION['name'])){
+         $Form=D('Reply');
+         $data['re_time']=date("y-n-d   H:i:s");//获得服务器时间
+         $data['admin_name']=$_SESSION['name'];
+         $data['content']=$_POST['content'];
+         $data['re_id']=$_POST['re_id'];
+         if($Form->create($data)) {
+            $result=$Form->add();
+            if($result) {
+                $this->message='添加回复成功！';
+                $this->display(go);//返回首页
+            }
+            else{
+                $this->error('写入错误！');
+            }
+          }
+           else{
+             echo 'create方法错误';
+            $this->error($Form->getError());
+           }
+       }
+        else{
+         $this->message='你没有管理权限，请登录！';
+         $this->display(go);//返回首页  
+        } 
+     }
+     public function reply_front(){
+          session_start();
+          if(!empty($_SESSION['name'])){
+             $this->re_id=$_GET['id'];
+             $this->display();
+           }
+           else{
+              $this->message='你没有管理权限,请登陆！';
+              $this->display(go);//返回首页 
+           } 
+      }
+}
