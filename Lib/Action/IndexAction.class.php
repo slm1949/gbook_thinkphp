@@ -7,6 +7,7 @@ class IndexAction extends Action {
         $info2=M('reply');
         $data2=$info2->select();
         $this->assign('data2',$data2);
+       
         session_start();
         if(empty($_SESSION['name'])){
            $this->display();

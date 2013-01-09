@@ -6,6 +6,7 @@
 <a href="__URL__/admin">管理员登陆</a>
 <center>
 <font size=5 color=#ff000>留言显示</font><br/>
+</center>
 <p>
 <foreach name="data" item="vo">
 <!--第{$vo.id}条：|
@@ -23,11 +24,17 @@
 内容：{$vo.content}|
 留言时间：{$vo.re_time}|
 留言IP地址：{$vo.ip}|
-<a href="__APP__/Form/rights/id/{$vo.id}/action/modify">修改</a>|
+<a href="__APP__/Form/rights/id/{$vo.id}/action/modify">修改</a>
 <!--a href="__APP__/Form/rights/id/{$vo.id}/action/del">删除</a-->
 <br/>
+<volist name="data2" id="i">
+<if condition="$i.re_id EQ $vo['id']">
+<font size=4 color=#0ff00>管理员回复:{$i.content}|回复时间：{$i.re_time}</font><br/>
+</if>
+</volist>
 <p>
 </volist>
+<center>
 <a href="__APP__/Form/add">添加一条留言</a>
 </center>
 </body><!--联系在HTML里写备注-->

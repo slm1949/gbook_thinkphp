@@ -4,9 +4,11 @@
 </head>
 <body>
 管理员:{$admin.name} <a href="__URL__/logout">注销</a>
+<br/>
 <center>
 <font size=5 color=#ff000>留言显示</font><br/>
 <p>
+</center>
 <volist name="data" id="vo">
 第{$vo.id}条：|
 作者:{$vo.user}|
@@ -19,15 +21,14 @@
 <a href="__APP__/Form/rights/id/{$vo.id}/action/modify">修改</a>|
 <a href="__APP__/Form/rights/id/{$vo.id}/action/del">删除</a>
 <br/>
-<p>
 <volist name="data2" id="i">
-<if condition="$i.re_id neq $vo.id">
-<p>
-回复:{$i.content}
+<if condition="$i.re_id EQ $vo['id']">  <!--为什么这里一定要写成$vo['id']-->
+<font size=4 color=#0ff00>管理员回复:{$i.content}|回复时间：{$i.re_time}</font><br/>
 </if>
 </volist>
+<p>
 </volist>
 <a href="__APP__/Form/add">添加一条留言</a>
-</center>
+<br/>
 </body><!--联系在HTML里写备注-->
 </html>
