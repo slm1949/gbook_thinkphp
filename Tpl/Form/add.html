@@ -1,8 +1,15 @@
 <html>
 <head>
+<script type="text/javascript" charset="utf-8">
+window.UEDITOR_HOME_URL="/ueditor/";
+</script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/editor_config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/editor_all.js"></script> 
+<link rel="stylesheet" type="text/css" href="/ueditor/themes/default/dialogbase.css"/>
 <title>添加留言版</title>
 </head>
 <body>
+
 <form method="post" action="__URL__/insert"> <!--mothod拼写之前错误为methos-->
 作者&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：
 <input type="text"  name="user"><br/>
@@ -11,7 +18,11 @@
 电子邮件：
 <input type="text" name="email"><br/>
 内容：
-<textarea name="content" rows ="5" clos="45"></TEXTAREA><br/>
+<textarea id="content"></textarea>
+<script language="javascript" type="text/javascript"> 
+var editor=new baidu.editor.ui.Editor();
+editor.render("content");
+</script>
 <input type="submit" value="提交">
 </form>
 <a href="__APP__">返回首页</a><br/>
