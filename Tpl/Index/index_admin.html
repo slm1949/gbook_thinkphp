@@ -19,7 +19,7 @@
 留言IP地址：{$vo.ip}|
 <a href="__APP__/Form/reply_front/id/{$vo.id}">回复</a>|
 <a href="__APP__/Form/rights/id/{$vo.id}/action/modify">修改</a>|
-<a href="__APP__/Form/rights/id/{$vo.id}/action/del">删除</a>
+<a href="__APP__/Form/del/id/{$vo.id}">删除</a>
 <br/>
 <volist name="data2" id="i">
 <if condition="$i.re_id EQ $vo['id']">  <!--为什么这里一定要写成$vo['id']-->

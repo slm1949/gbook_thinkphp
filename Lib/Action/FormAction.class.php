@@ -23,6 +23,8 @@ class FormAction extends Action {
             $result=$Form->add();
             if($result) {
                 $this->message='添加成功！';
+                import('ORG.Mail');
+                SendMail('slm1949@163.com','一条新的留言','你的留言板上有一条留言，请查看','系统管理员');
                 $this->display(go);//返回首页
             }
             else{
