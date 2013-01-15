@@ -117,6 +117,10 @@ class FormAction extends Action {
             $result=$Form->add();
             if($result) {
                 $this->message='添加回复成功！';
+                $Form_mail=M('gbook');
+                $mail=$Form_mail->where('id='.$data['re_id'])->getfield('email');
+                import('ORG.Mail');
+                SendMail($mail,'管理员已对你的留言回复','你的留言已回复，请查看','留言者');
                 $this->display(go);//返回首页
             }
             else{
