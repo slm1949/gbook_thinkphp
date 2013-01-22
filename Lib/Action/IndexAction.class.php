@@ -7,8 +7,12 @@ class IndexAction extends Action {
         $info2=M('reply');
         $data2=$info2->select();
         $this->assign('data2',$data2);
-       
-        session_start();
+        /*$email = "slm1949@163.com";
+       $default='http://www.gravatar.com/avatar/fca897bd7fb2d58e94e5525c484e4ec9.png';
+      $size = 40;
+    $this->grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+        */
+         session_start();
         if(empty($_SESSION['name'])){
            $this->display();
          }
