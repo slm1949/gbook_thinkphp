@@ -10,7 +10,13 @@
 <p>
 </center>
 <volist name="data" id="vo">
-<img src="{$grav_url}" alt="" />
+<?php 
+      $email = $vo[email];
+      $default='http://www.gravatar.com/avatar/fca897bd7fb2d58e94e5525c484e4ec9.png';
+      $size = 40;
+    $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+?>
+<img src="<?php echo $grav_url; ?>" alt="" />
 第{$vo.id}条：|
 作者:{$vo.user}|
 标题：{$vo.title}|
@@ -29,6 +35,7 @@
 </volist>
 <p>
 </volist>
+<div class="result page">{$page}</div>
 <a href="__APP__/Form/add">添加一条留言</a>
 <br/>
 </body><!--联系在HTML里写备注-->

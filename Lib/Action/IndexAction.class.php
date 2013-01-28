@@ -1,18 +1,26 @@
 <?php
 class IndexAction extends Action {
     public function index(){
-	$info=M('gbook');
-        $data=$info->select();
+	import('ORG.Util.Page');// 导入分页类
+        $info=M('gbook');
+        $count=$info->count();// 查询满足要求的总记录数 $map表示查询条件
+        $Page=new Page($count,5);// 实例化分页类 传入总记录数
+        $show=$Page->show();// 分页显示输出
+        //$data=$info->select();
+        // 进行分页数据查询
+        $data= $info->order('re_time')->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('data',$data);
+        $this->assign('page',$show);// 赋值分页输出
+        
         $info2=M('reply');
         $data2=$info2->select();
         $this->assign('data2',$data2);
-        /*$email = "slm1949@163.com";
-       $default='http://www.gravatar.com/avatar/fca897bd7fb2d58e94e5525c484e4ec9.png';
-      $size = 40;
-    $this->grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
-        */
-         session_start();
+        session_start();
+
+    
+    
+
+
         if(empty($_SESSION['name'])){
            $this->display();
          }
