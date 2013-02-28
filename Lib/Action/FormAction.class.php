@@ -8,6 +8,11 @@ class FormAction extends Action {
          $data['title']=$_POST['title'];
          $data['email']=$_POST['email'];
          $data['content']=$_POST['content'];
+     if(preg_match('/<script>/',$data['user'])){
+             echo '你输入的内容包含非法字符';
+             $this->error('');
+     }
+     else{
          $condition1['ip']=$data['ip'];
          $condition1['re_time']=array('ELT',$data['re_time']);
          $condition1['re_time']=array('EGT',$data['re_time']-'00-00-00 00:05:00');
@@ -18,13 +23,13 @@ class FormAction extends Action {
          $condition3['re_time']=array('ELT',$data['re_time']);
          $condition3['re_time']=array('EGT',$data['re_time']-'00-00-01 00:00:00');
          //限制5分钟，1小时，1天内同意IP留言数量
-   if($Form->where($condition1)->count()<50 and $Form->where($condition2)->count()<20 and $Form->where($condition3)->count()<100 ){
+     if($Form->where($condition1)->count()<50 and $Form->where($condition2)->count()<20 and $Form->where($condition3)->count()<100 ){
         if($Form->create($data)) {
             $result=$Form->add();
             if($result) {
                 $this->message='添加成功！';
-                import('ORG.Mail');
-                SendMail('slm1949@163.com','一条新的留言','你的留言板上有一条留言，请查看','系统管理员');
+                //import('ORG.Mail');
+               // SendMail('slm1949@163.com','一条新的留言','你的留言板上有一条留言，请查看','系统管理员');
                 $this->display(go);//返回首页
             }
             else{
@@ -40,6 +45,7 @@ class FormAction extends Action {
      $this->message='你的留言大于规定时间的留言数量！';
      $this->display(go);//返回首页
      }
+  }
     }
     public function del(){
            //echo $_GET[id];
