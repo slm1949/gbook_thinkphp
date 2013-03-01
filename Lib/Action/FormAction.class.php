@@ -8,11 +8,12 @@ class FormAction extends Action {
          $data['title']=$_POST['title'];
          $data['email']=$_POST['email'];
          $data['content']=$_POST['content'];
-     if(preg_match('/<script>/',$data['user'])){
-             echo '你输入的内容包含非法字符';
-             $this->error('');
-     }
-     else{
+         session_start();
+     if(session('verify')==md5($_POST['verify'])){
+       if(preg_match('/<script>/',$data['user'])){
+             $this->error('你输入的内容包含非法字符');
+       }
+       else{
          $condition1['ip']=$data['ip'];
          $condition1['re_time']=array('ELT',$data['re_time']);
          $condition1['re_time']=array('EGT',$data['re_time']-'00-00-00 00:05:00');
@@ -45,7 +46,11 @@ class FormAction extends Action {
      $this->message='你的留言大于规定时间的留言数量！';
      $this->display(go);//返回首页
      }
-  }
+    }
+   }
+   else{
+       $this->error('验证码错误！');
+   }
     }
     public function del(){
            //echo $_GET[id];
@@ -154,4 +159,5 @@ class FormAction extends Action {
               $this->display(go);//返回首页 
            } 
       }
+
 }
