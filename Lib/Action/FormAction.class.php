@@ -159,5 +159,22 @@ class FormAction extends Action {
               $this->display(go);//返回首页 
            } 
       }
-
+     public function add(){
+          $Form=D('Gbook');
+          // $condition['ip']=$_SERVER['REMOTE_ADDR'];
+         // $condition['re_time']=array('ELT',date("y-n-d   H:i:s"));
+          //$condition['re_time']=array('EGT',DATE_ADD(date("y-n-d   H:i:s"),INTERVAL 10 munite));
+          //SELECT * FROM `thinkphp_gbook` WHERE re_time> DATE_ADD("2013-1-31 23:59:59",INTERVAL 1 SECOND)
+          $ip=$_SERVER['REMOTE_ADDR'];
+          $time=date("y-n-d h:i:s");
+          $sql="'ip'=‘$ip' and 're_time'<'$time' and 're_time'>DATE_SUB('$time',INTERVAL 10 minute)";//注意引号的书写 及意义
+echo $sql;
+         if($Form->where($sql)->count()<1){
+             $this->display();
+          }
+          else{
+            $this->display(add2);
+          }
+         
+     }
 }
