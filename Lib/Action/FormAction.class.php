@@ -9,7 +9,7 @@ class FormAction extends Action {
          $data['email']=$_POST['email'];
          $data['content']=$_POST['content'];
          session_start();
-     if(session('verify')==md5($_POST['verify'])){
+     if(session('verify')==md5($_POST['verify']) or ! isset($_POST['verify'])){
        if(preg_match('/<script>/',$data['user'])){
              $this->error('你输入的内容包含非法字符');
        }
@@ -161,13 +161,9 @@ class FormAction extends Action {
       }
      public function add(){
           $Form=D('Gbook');
-          // $condition['ip']=$_SERVER['REMOTE_ADDR'];
-         // $condition['re_time']=array('ELT',date("y-n-d   H:i:s"));
-          //$condition['re_time']=array('EGT',DATE_ADD(date("y-n-d   H:i:s"),INTERVAL 10 munite));
-          //SELECT * FROM `thinkphp_gbook` WHERE re_time> DATE_ADD("2013-1-31 23:59:59",INTERVAL 1 SECOND)
           $ip=$_SERVER['REMOTE_ADDR'];
-          $time=date("y-n-d h:i:s");
-          $sql="'ip'=‘$ip' and 're_time'<'$time' and 're_time'>DATE_SUB('$time',INTERVAL 10 minute)";//注意引号的书写 及意义
+          $time=date("y-n-d H:i:s");//注意这里H 大写小写的区别。
+          $sql="ip='$ip' and re_time<'$time' and re_time>DATE_SUB('$time',INTERVAL 10 minute)";//注意引号的书写 及意义，ip 上加不家引号的区别
 echo $sql;
          if($Form->where($sql)->count()<1){
              $this->display();
