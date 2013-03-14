@@ -164,13 +164,37 @@ class FormAction extends Action {
           $ip=$_SERVER['REMOTE_ADDR'];
           $time=date("y-n-d H:i:s");//注意这里H 大写小写的区别。
           $sql="ip='$ip' and re_time<'$time' and re_time>DATE_SUB('$time',INTERVAL 10 minute)";//注意引号的书写 及意义，ip 上加不家引号的区别
-echo $sql;
          if($Form->where($sql)->count()<1){
              $this->display();
           }
           else{
             $this->display(add2);
           }
-         
+      }
+     public function zhuce_back(){
+          if($_POST[password1]!=$_POST[password2]){
+            $this->error('两次输入的密码不一致');
+           }
+          else{
+            $Form=M('user');
+            $data['name']=$_POST['name'];
+            $data['password']=$_POST['password1'];
+            $data['user_name']=$_POST['user_name'];
+            $sql="name='".$_POST['name']."'";//这里的写法
+            if($Form->where($sql)->count()==0){
+                $Form->create($data);
+                $result=$Form->add();
+                if($result){
+                $this->message='用户注册成功';
+                $this->display(go);
+                }
+                else{
+                   $this->error('用户注册失败');  
+                }
+            }
+            else{
+            $this->error('登录名已被使用');
+            }
+          }
      }
 }
