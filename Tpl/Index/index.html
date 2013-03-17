@@ -4,7 +4,7 @@
 </head>
 <body>
 <a href="__URL__/login">登陆</a>
-<a href="__APP__/Form/zhuce">注册</a>
+<a href="__APP__/Zhuce/">注册</a>
 <p align="right">
 <a href="__URL__/admin",align="right">管理员登陆</a>
 </p>
@@ -17,7 +17,7 @@
       $email = $vo[email];
       $default='http://www.gravatar.com/avatar/fca897bd7fb2d58e94e5525c484e4ec9.png';
       $size = 40;
-    $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+      $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
 ?>
 <img src="<?php echo $grav_url; ?>" alt="" />
 第{$vo.id}条：|
@@ -37,9 +37,7 @@
 </volist>
 <p>
 </volist>
-
 <div class="result page">{$page}</div>
-
 <center>
 <a href="__APP__/Form/add">添加一条留言</a>
 </center>
